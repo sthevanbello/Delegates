@@ -3,7 +3,7 @@ using System;
 
 namespace ExampleDelegate
 {
-    delegate double BinaryNumericOperation(double n1, double n2);
+    delegate void BinaryNumericOperation(double n1, double n2);
     class Program
     {
         static void Main(string[] args)
@@ -13,13 +13,15 @@ namespace ExampleDelegate
 
             // BinaryNumericOperation op = CalculationService.Sum;
             //BinaryNumericOperation op = new BinaryNumericOperation(CalculationService.Sum);
-            BinaryNumericOperation op = CalculationService.Sum;
+            BinaryNumericOperation op = CalculationService.ShowSum;
 
-            //op += CalculationService.Max;
+            op += CalculationService.ShowMax;
 
             //double result = op(a, b);
-            double result = op.Invoke(a, b);
-            Console.WriteLine(result);
+            //double result = op.Invoke(a, b);
+            
+            op.Invoke(a, b);
+            
 
             
             Console.ReadKey();
